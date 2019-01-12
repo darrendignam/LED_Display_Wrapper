@@ -30,12 +30,12 @@ LED_Display_Wrapper::LED_Display_Wrapper()
 }
 
 // Public Methods implementation
-void writeDigitRaw(uint8_t n, uint16_t bitmask){
-    alpha4.writeDigitRaw(n, BitMask);
+void LED_Display_Wrapper::writeDigitRaw(uint8_t n, uint16_t bitmask){
+    alpha4.writeDigitRaw(n, bitmask);
 }
 
-void writeDisplay(void){
-    alpha4.writeDisplay(void);
+void LED_Display_Wrapper::writeDisplay(){
+    alpha4.writeDisplay();
 }
 
 void LED_Display_Wrapper::ScrollText(String _message)
@@ -45,6 +45,7 @@ void LED_Display_Wrapper::ScrollText(String _message)
     for (int i = 0; i < _message.length(); ++i)
     {
         PushChar(_message[i]);
+        alpha4.writeDisplay();
         delay(200);
     }
 }
@@ -68,7 +69,7 @@ void LED_Display_Wrapper::PushChar(char c)
     alpha4.writeDigitAscii(5, displaybuffer[5]);
 
     // write it out!
-    alpha4.writeDisplay();
+    // alpha4.writeDisplay();  //this is causing blinking... remove in future!
 }
 
 void LED_Display_Wrapper::FillTextBuffer(String _message)

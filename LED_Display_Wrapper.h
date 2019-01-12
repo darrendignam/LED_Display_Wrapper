@@ -17,7 +17,7 @@ class LED_Display_Wrapper
   public:
     LED_Display_Wrapper();
     void writeDigitRaw(uint8_t n, uint16_t bitmask);
-    void writeDisplay(void);
+    void writeDisplay();
     void ScrollText(String _message);
     void PushChar(char c);
     void FillTextBuffer(String _message);
