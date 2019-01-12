@@ -30,6 +30,14 @@ LED_Display_Wrapper::LED_Display_Wrapper()
 }
 
 // Public Methods implementation
+void writeDigitRaw(uint8_t n, uint16_t bitmask){
+    alpha4.writeDigitRaw(n, BitMask);
+}
+
+void writeDisplay(void){
+    alpha4.writeDisplay(void);
+}
+
 void LED_Display_Wrapper::ScrollText(String _message)
 {
 	//srd::String not working on pro mini
