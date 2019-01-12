@@ -3,7 +3,11 @@
 
 #include "Arduino.h"
 
-#include <string>
+//string was causing compile errors on non ESP boards...
+// #include <string>
+#include <string.h>
+
+
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include "Adafruit_LEDBackpack.h"
@@ -14,8 +18,9 @@ class LED_Display_Wrapper
     LED_Display_Wrapper();
     void ScrollText(String _message);
     void PushChar(char c);
+    void FillTextBuffer(String _message);
     void BLINK();
-    char displaybuffer[5];
+    char displaybuffer[6];
     Adafruit_AlphaNum4 alpha4;
 
   private:
