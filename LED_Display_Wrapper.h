@@ -1,3 +1,26 @@
+/****************************************************************************************************** 
+  This library is for controlling multiple 14-Segment displays.
+
+  Designed specifically to work with the Tickertape Retro Display
+        http://tickertape.cc/
+
+
+  These displays use I2C to communicate, 2 pins are required to 
+  interface.
+
+  This library is a wrapper of the AdaFriut LED Backbackpack and GFX libraries:
+        https://github.com/adafruit/Adafruit-GFX-Library
+        https://github.com/adafruit/Adafruit_LED_Backpack
+
+  The Adafruit Backpack library dosnt support the '.' full stop, and I didnt like some of their font
+  choices for the number digits, so I have created a modified version:
+        https://github.com/darrendignam/Adafruit_LED_Backpack
+
+
+  (c) Darren Dignam 2019 
+  MIT license, all text above must be included in any redistribution
+ *******************************************************************************************************/
+
 #ifndef LED_Display_Wrapper_h
 #define LED_Display_Wrapper_h
 
@@ -31,8 +54,6 @@ class LED_Display_Wrapper
     uint8_t brightness;
 
   private:
-    // int translateAngleToStepperSteps(float angle);
-    // float _leftWheelDiamater;
     static const uint16_t _outer[];
     static const uint16_t _outer2[];
     static const uint16_t _inner[];
