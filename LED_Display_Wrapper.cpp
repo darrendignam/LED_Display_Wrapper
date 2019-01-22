@@ -63,6 +63,10 @@ void LED_Display_Wrapper::writeDisplay(){
     alpha4.writeDisplay();
 }
 
+void LED_Display_Wrapper::clear(){
+    alpha4.clear();
+}
+
 void LED_Display_Wrapper::ScrollText(String _message)
 {
 	//srd::String not working on pro mini
@@ -137,24 +141,12 @@ void LED_Display_Wrapper::BLINK()
     alpha4.setBrightness(brightness); //  reset back to brightness before blinking. This can be stored in the main app code as a user parameter
 }
 
-void LED_Display_Wrapper::SPINNER_OUTER(uint8_t num){
-    for (int x = 0; x < num; x++){
-        for (int i = 0; i < 8; i++){
-            for (int L = 0; L < 5; L++){
-                alpha4.writeDigitRaw(L, _inner[i]);
-                alpha4.writeDisplay();
-            }
-            delay(100);
-        }
-    }
-}
 
 
 /*
     These are some pre-defined patterns for the display. 'Loading' spinners!
 */
-
-static const uint16_t _outer[] = {
+static const uint16_t _outer[] PROGMEM = {
     0b0000000000000001, //1
     0b0000000000000010, //2
     0b0000000000000100, //4
@@ -162,18 +154,40 @@ static const uint16_t _outer[] = {
     0b0000000000010000, //16 
     0b0000000000100000, //32
 };
+void LED_Display_Wrapper::SPINNER_OUTER(uint8_t num){
+    for (int x = 0; x < num; x++){
+        for (int i = 0; i < 6; i++){
+            for (int L = 0; L < 6; L++){
+                alpha4.writeDigitRaw(L, _outer[i]);
+                alpha4.writeDisplay();
+            }
+            delay(100);
+        }
+    }
+}
 
-static const uint16_t _outer2[] = {
+static const uint16_t _outer2[] PROGMEM = {
     0b0000011100000001, //1
     0b0000010010000010, //2
     0b0010000010000100, //4
     0b0011100000001000, //8
-    0b0010100000010000, //16
+    0b0000100000010000, //16
     0b0000000101100000, //32
 };
+void LED_Display_Wrapper::SPINNER_OUTER2(uint8_t num){
+    for (int x = 0; x < num; x++){
+        for (int i = 0; i < 6; i++){
+            for (int L = 0; L < 6; L++){
+                alpha4.writeDigitRaw(L, _outer2[i]);
+                alpha4.writeDisplay();
+            }
+            delay(100);
+        }
+    }
+}
 
 //Spinner_Inner
-static const uint16_t _inner[] = {
+static const uint16_t _inner[] PROGMEM = {
      0b0000001000000000, //512             10
      0b0000010000000000, //1024            11
      0b0000000010000000, //128             8
@@ -183,9 +197,20 @@ static const uint16_t _inner[] = {
      0b0000000001000000, //64              7
      0b0000000100000000, //256             9
  };
+ void LED_Display_Wrapper::SPINNER_INNER(uint8_t num){
+    for (int x = 0; x < num; x++){
+        for (int i = 0; i < 8; i++){
+            for (int L = 0; L < 6; L++){
+                alpha4.writeDigitRaw(L, _inner[i]);
+                alpha4.writeDisplay();
+            }
+            delay(100);
+        }
+    }
+}
 
 //Spinner_Inner_negative
-static const uint16_t _inner_negative[] = {
+static const uint16_t _inner_negative[] PROGMEM = {
     0b1111110111111111, //502             01
     0b1111101111111111, //0124            00
     0b1111111101111111, //028             8
@@ -195,9 +220,51 @@ static const uint16_t _inner_negative[] = {
     0b1111111110111111, //64              7
     0b1111111011111111, //256             9
 };
+void LED_Display_Wrapper::SPINNER_INNER_NEGATIVE(uint8_t num){
+    for (int x = 0; x < num; x++){
+        for (int i = 0; i < 8; i++){
+            for (int L = 0; L < 6; L++){
+                alpha4.writeDigitRaw(L, _inner_negative[i]);
+                alpha4.writeDisplay();
+            }
+            delay(100);
+        }
+    }
+}
+
+//Spinner_Inner
+static const uint16_t _inner_fade[] PROGMEM = {
+     0b0000001000000000, 
+     0b0000011000000000, 
+     0b0000011010000000, 
+     0b0010011010000000, 
+     0b0011011010000000, 
+     0b0011111010000000, 
+     0b0011111011000000, 
+     0b0011111111000000,
+     0b0011110111000000,
+     0b0011100111000000,
+     0b0011100101000000,
+     0b0001100101000000,
+     0b0000100101000000,
+     0b0000000101000000,
+     0b0000000100000000,
+     0b0000000000000000,
+ };
+ void LED_Display_Wrapper::SPINNER_INNER_FADE(uint8_t num){
+    for (int x = 0; x < num; x++){
+        for (int i = 0; i < 16; i++){
+            for (int L = 0; L < 6; L++){
+                alpha4.writeDigitRaw(L, _inner_fade[i]);
+                alpha4.writeDisplay();
+            }
+            delay(100);
+        }
+    }
+}
 
 //Spinner_Outer_Inner
-static const uint16_t _inner_outer[] = {
+static const uint16_t _inner_outer[] PROGMEM = {
     0b0000001000000001,
     0b0000010000000011,
     0b0000000010000110,
@@ -205,5 +272,16 @@ static const uint16_t _inner_outer[] = {
     0b0001000000001000,
     0b0000100000011000,
     0b0000000001110000,
-    0b000000010100001,
+    0b000000100100001,
 };
+void LED_Display_Wrapper::SPINNER_INNER_OUTER(uint8_t num){
+    for (int x = 0; x < num; x++){
+        for (int i = 0; i < 8; i++){
+            for (int L = 0; L < 6; L++){
+                alpha4.writeDigitRaw(L, _inner_outer[i]);
+                alpha4.writeDisplay();
+            }
+            delay(100);
+        }
+    }
+}

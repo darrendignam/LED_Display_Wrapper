@@ -42,22 +42,24 @@ class LED_Display_Wrapper
     void setBrightness(uint8_t b);
     void writeDigitRaw(uint8_t n, uint16_t bitmask);
     void writeDisplay();
+    void clear();
     void ScrollText(String _message);
     void PushChar(char c);
     void FillTextBuffer(String _message);
 
     void BLINK();
-    void SPINNER_OUTER(uint8_t num);
+    void SPINNER_OUTER(uint8_t num_spins);
+    void SPINNER_OUTER2(uint8_t num_spins);
+    void SPINNER_INNER(uint8_t num_spins);
+    void SPINNER_INNER_NEGATIVE(uint8_t num_spins);
+    void SPINNER_INNER_FADE(uint8_t num_spins);
+    void SPINNER_INNER_OUTER(uint8_t num_spins);
     
     char displaybuffer[6];
     Adafruit_AlphaNum4 alpha4;
     uint8_t brightness;
 
   private:
-    static const uint16_t _outer[];
-    static const uint16_t _outer2[];
-    static const uint16_t _inner[];
-    static const uint16_t _inner_negative[];
-    static const uint16_t _inner_outer[];
+
 };
 #endif
