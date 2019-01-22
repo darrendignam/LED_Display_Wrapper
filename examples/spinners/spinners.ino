@@ -23,7 +23,7 @@
 LED_Display_Wrapper LEDdisplay = LED_Display_Wrapper();
 
 void setup() {
-  Serial.begin(115200);       //Serial speedd for ESP32, try lower 9600 for Arduino UNO
+  Serial.begin(115200);       //Serial speed for ESP32, try lower 9600 for Arduino UNO
   Serial.println();
   Serial.println("LED_Display_Wrapper library test application.");
 }
