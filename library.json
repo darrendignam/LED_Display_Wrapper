@@ -1,8 +1,8 @@
 {
   "name": "LED_Display_Wrapper",
   "version": "1.0",
-  "keywords": "Segment Display, Holtek, HT16K33, Scrolling Text, ESP32, ESP8266, Arduino",
-  "description": "A display wrapper for the Single Segment driver - to enable easier interfacing with multiple characters for things like scrolling text.",
+  "keywords": "segment, display, holtek, HT16K33, scrolling, text, ESP32, ESP8266, arduino",
+  "description": "A display wrapper for the Single 14-Segment display driver - to enable easier interfacing with multiple characters for things like scrolling text.",
   "repository":
   {
     "type": "git",
